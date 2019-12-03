@@ -3,8 +3,7 @@ import Yandex_translate_offers
 import Yandex_translate_words
 from alphabet import alphabet
 from info import info
-import requests
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -45,9 +44,8 @@ def start_message(message):
     BOT.send_message(message.chat.id, info(),
                              parse_mode="HTML")
 
-
-@BOT.message_handler(content_types=['text'])
 @app.route('/',methods=["POST"])
+@BOT.message_handler(content_types=['text'])
 def send_text(message):
     ''' Обработчик сообщений с текстом '''
     # if message.text == 'Привет':
@@ -69,4 +67,4 @@ BOT.polling() # Не завершать работу бота
 
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
