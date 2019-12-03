@@ -63,8 +63,6 @@ def send_text(message):
         BOT.send_message(message.chat.id, "❌ Ошибка перевода.\n Бот строго относится к грамматике. Проверь, написал ли ты без ошибок? \n Или просто попробуй заменить слово на синоним.")
 print("Start")
 
-BOT.polling() # Не завершать работу бота
-
 
 if __name__ == '__main__':
     app.run(debug=True)
