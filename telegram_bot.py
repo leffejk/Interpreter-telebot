@@ -45,8 +45,9 @@ def start_message(message):
     BOT.send_message(message.chat.id, info(),
                              parse_mode="HTML")
 
-@app.route('/',methods=["POST"])
+
 @BOT.message_handler(content_types=['text'])
+@app.route('/',methods=["POST"])
 def send_text(message):
     ''' Обработчик сообщений с текстом '''
     # if message.text == 'Привет':
@@ -68,4 +69,4 @@ BOT.polling() # Не завершать работу бота
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
