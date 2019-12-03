@@ -12,14 +12,17 @@ def language_definition(text):
         return "ru-en"
 
 
-TOKKEN = r"724744496:AAH08g3E2oA5MThJV8iP9fMCI7L9W0VQDa4"
+TOKKEN = r"944747056:AAE2A6hzE9xYOvhVVwkXy37eqFPhoJiNNgo"
 BOT = telebot.TeleBot(TOKKEN)
 
 
 @BOT.message_handler(commands=['start'])
 def start_message(message):
     ''' Обработчик команды /start '''
-    BOT.send_message(message.chat.id, 'Привет :) Это бот переводчик\nДля получения информации об использовании бота - введи /info')
+    BOT.send_message(message.chat.id, '''Привет! 
+Я бот-переводчик 🤖
+Для получения информации обо мне введи «/info»
+Если хочешь начать работу, то просто отправь нужное слово''', parse_mode="HTML")
 
 @BOT.message_handler(commands=['alp'])
 def start_message(message):
