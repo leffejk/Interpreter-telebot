@@ -3,6 +3,15 @@ import Yandex_translate_offers
 import Yandex_translate_words
 from alphabet import alphabet
 from info import info
+import requests
+from flask import Flask
+
+app = Flask(__name__)
+
+
+
+
+
 
 def language_definition(text):
     ''' Используется для определения языка (по первой букве) '''
@@ -14,6 +23,7 @@ def language_definition(text):
 
 TOKKEN = r"944747056:AAE2A6hzE9xYOvhVVwkXy37eqFPhoJiNNgo"
 BOT = telebot.TeleBot(TOKKEN)
+BOT.set_webhook()
 
 
 @BOT.message_handler(commands=['start'])
@@ -35,6 +45,7 @@ def start_message(message):
     BOT.send_message(message.chat.id, info(),
                              parse_mode="HTML")
 
+@app.route('/',methods=["POST"])
 @BOT.message_handler(content_types=['text'])
 def send_text(message):
     ''' Обработчик сообщений с текстом '''
@@ -54,3 +65,7 @@ def send_text(message):
 print("Start")
 
 BOT.polling() # Не завершать работу бота
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
